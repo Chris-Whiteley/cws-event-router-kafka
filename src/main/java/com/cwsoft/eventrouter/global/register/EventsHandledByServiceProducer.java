@@ -6,14 +6,17 @@ import com.cwsoft.eventrouter.global.util.TopicNameHelper;
 import com.cwsoft.messaging.kafka.AbstractKafkaProducer;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.inject.Singleton;
 import java.util.Properties;
 
 @SuppressWarnings("unused") // library class for use as implementation for cws-event-router
 @Slf4j
-@Singleton
 public class EventsHandledByServiceProducer extends AbstractKafkaProducer<EventsHandledByService> {
     private final String topicName;
+
+    public EventsHandledByServiceProducer(Properties kafkaProperties) {
+        this (null, kafkaProperties);
+    }
+
 
     public EventsHandledByServiceProducer(String eventsHandledByServiceTopicName, Properties kafkaProperties) {
         super(kafkaProperties);

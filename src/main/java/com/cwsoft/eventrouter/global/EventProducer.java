@@ -6,15 +6,17 @@ import com.cwsoft.messaging.kafka.AbstractKafkaChunkingProducer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.inject.Singleton;
 import java.util.Properties;
 
 @SuppressWarnings("unused") // library class for use as implementation for cws-event-router
 @Slf4j
-@Singleton
 public class EventProducer extends AbstractKafkaChunkingProducer<RemoteServiceEvent> {
 
     private final String eventsForServiceRootTopicName;
+
+    public EventProducer(Properties kafkaProperties, int maxMessageSize) {
+        this(null, kafkaProperties, maxMessageSize);
+    }
 
     public EventProducer(String eventsForServiceRootTopicName, Properties kafkaProperties, int maxMessageSize) {
         super(kafkaProperties, maxMessageSize);
