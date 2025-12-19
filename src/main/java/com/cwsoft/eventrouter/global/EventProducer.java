@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.Properties;
 
-@SuppressWarnings("unused") // library class for use as implementation for cws-event-router
+@SuppressWarnings("unused") // library class for use as an implementation for cws-event-router
 @Slf4j
 public class EventProducer extends AbstractKafkaChunkingProducer<RemoteServiceEvent> {
 
